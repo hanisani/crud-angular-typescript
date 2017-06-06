@@ -37,7 +37,7 @@ export class SurveyListComponent implements OnInit {
 
   onDelete(id: number) {
     if (confirm('Are you sure that you wish to delete this survey?')) {      
-      this.surveyService.deleteSurvey(id);
+      this.surveyService.deleteSurvey(id);      
     }
   }
 
