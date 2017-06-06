@@ -1,0 +1,22 @@
+<div class="row table-bordered">
+  <div class="col-xs-9">
+    <h4>Title</h4>
+  </div>
+  <div class="col-xs-3 text-center">
+    <h4>Actions</h4>
+  </div>
+</div>
+<div class="row table-bordered" *ngFor="let survey of surveys">
+  <div class="col-xs-9">
+    {{ survey.title }}
+  </div>
+  <div class="col-xs-1">
+    <button class="btn btn-primary" (click)="onQuestions(survey.sid)">Questions</button>
+  </div>
+  <div class="col-xs-1">
+    <button class="btn btn-success" (click)="onEdit(survey.sid)">Edit</button>
+  </div>
+  <div class="col-xs-1">
+    <button class="btn btn-danger" (click)="onDelete(survey.sid)">Delete</button>
+  </div>
+</div>

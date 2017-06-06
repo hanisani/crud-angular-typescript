@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-xs-6 pull-left">
+        Department Listing
+    </div>
+    <div class="col-xs-6 pull-right">
+        Add New Department
+    </div>
+</div>
+
+<div class="row list-group">
+    <div class="col-xs-1 list-group-item">
+        <h4 class="list-group-item-heading">ID</h4>
+    </div>
+    <div class="col-xs-3 list-group-item">
+        <h4 class="list-group-item-heading">Department Name</h4>
+    </div>
+    <div class="col-xs-2 list-group-item">
+        <h4 class="list-group-item-heading">Image</h4>
+    </div>
+    <div class="col-xs-6 list-group-item">
+        <h4 class="list-group-item-heading">Action</h4>
+    </div>
+</div>
+
+<div class="row list-group" *ngFor="let department of departments">
+    <div class="col-xs-1 list-group-item-text">
+        {{ department.ID }}
+    </div>
+    <div class="col-xs-3 list-group-item-text">
+        {{ department.Name }}
+    </div>
+    <div class="col-xs-2">
+        <img src="{{ department.ImagePath }}" alt="{{ department.Name }}" style="max-height: 50px;">
+    </div>
+    <div class="col-xs-2 list-group-item-text">
+        <form>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-success">Details</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-2 list-group-item-text">
+        <form>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-success">Edit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-2 list-group-item-text">
+        <form>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </form>        
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h4>Deparment Details</h4>
+    </div>
+    <div class="col-xs-12">
+        Students in this department are:
+        <app-department-add></app-department-add>
+    </div>
+</div>

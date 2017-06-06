@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h3 class="pull-left">Update Survey</h3>
+  </div>
+  <div class="col-xs-6">
+    <button class="btn btn-primary pull-right" (click)="onBack()">Back to Survey</button>
+  </div>
+</div>
+<hr>
+<div *ngIf="survey">
+  <form role="form" (ngSubmit)="onUpdate(f)" #f="ngForm">
+    <div class="row">
+      <div class="col-xs-4">
+        <label for="title">Title</label>
+      </div>
+      <div class="col-xs-8">
+        <input type="text" id="title" name="title" class="form-control" placeholder="Survey Title" [(ngModel)]="survey.title" #title="ngModel"
+          required>
+        <span class="help-block" *ngIf="!title.valid && title.touched">Please enter title</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4"></div>
+      <div class="col-xs-8">
+        <input type="hidden" id="sid" name="sid" [(ngModel)]="survey.sid">
+        <button type="submit" class="btn btn-success" [disabled]="!f.valid">Update</button>
+        <button type="button" class="btn btn-primary" (click)="onClear(f)">Clear</button>
+      </div>
+    </div>
+  </form>
+</div>

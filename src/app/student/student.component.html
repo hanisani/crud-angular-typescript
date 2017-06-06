@@ -1,0 +1,10 @@
+<p>This is student component</p>
+<p>Student ID is : {{ ID }}</p>
+<p>Student Name is : {{ Name }}</p>
+<p>Student Address is : {{ Address }}</p>
+
+<button class="btn btn-primary" [disabled]="!AllowNewStudent">Add Student</button>
+
+<p [innerText]="AllowNewStudent"></p>
+
+{{ AllowNewStudent }}

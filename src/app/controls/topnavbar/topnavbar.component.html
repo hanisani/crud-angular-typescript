@@ -1,0 +1,11 @@
+<nav class="navbar">
+  <ul class="nav nav-tabs">
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/">Home</a></li>
+    <li routerLinkActive="active" *ngIf="authService.isAuthenticated()"><a routerLink="/surveys">Survey</a></li>
+    <ng-template [ngIf]="!authService.isAuthenticated()">
+      <li routerLinkActive="active" class><a routerLink="/signup">Sign Up</a></li>
+      <li routerLinkActive="active"><a routerLink="/signin">Sign In</a></li>
+    </ng-template>
+    <li><a style="cursor: pointer;" (click)="onLogout()" *ngIf="authService.isAuthenticated()">Log Out</a></li>
+  </ul>
+</nav>

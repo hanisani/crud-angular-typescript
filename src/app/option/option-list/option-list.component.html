@@ -1,0 +1,33 @@
+<div class="row table-bordered">
+    <div class="col-xs-1">
+        <h4>ID</h4>
+    </div>
+    <div class="col-xs-3">
+        <h4>Title</h4>
+    </div>
+    <div class="col-xs-6">
+        <h4>Description</h4>
+    </div>
+    <div class="col-xs-2 text-center">
+        <h4>Actions</h4>
+    </div>
+</div>
+<div class="row table-bordered" *ngFor="let option of options">
+    <div class="col-xs-1">
+        {{ option.id }}
+    </div>
+    <div class="col-xs-3">
+        {{ option.title }}
+    </div>
+    <div class="col-xs-6">
+        {{ option.description }}
+    </div>
+    <div class="col-xs-1">
+        <button class="btn btn-success">Edit</button>            
+    </div>
+    <div class="col-xs-1">
+        <button class="btn btn-danger">Delete</button>
+    </div>
+</div>
+<hr>
+<button class="btn btn-primary" (click)="onReloadOptions()">Reload Options</button>
