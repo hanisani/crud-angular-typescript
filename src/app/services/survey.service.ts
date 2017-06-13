@@ -13,7 +13,7 @@ export class SurveyService {
 
     constructor(private http: Http, private router: Router) { }
 
-    getSurveys() {
+    getSurveys(): Observable<Survey[]> {
         return this.http.get(this.surveyURL, { headers: this.getHeaders() }).map(
             response => response.json() as Survey[]
         ).catch(
@@ -23,7 +23,7 @@ export class SurveyService {
             );
     }
 
-    getSurvey(id: number) {
+    getSurvey(id: number): Observable<any> {
         return this.http.get(this.surveyURL + id, { headers: this.getHeaders() }).map(
             response => response.json() as Survey
         ).catch(
@@ -34,7 +34,7 @@ export class SurveyService {
     }
 
     addSurvey(survey: Survey) {
-        this.http.post(this.surveyURL, survey, { headers: this.getHeaders() }).subscribe(
+        this.http.post(this.surveyURL, JSON.stringify(survey), { headers: this.getHeaders() }).subscribe(
             (response: Response) => {
                 this.router.navigate(['/surveys']);
             },
@@ -46,7 +46,7 @@ export class SurveyService {
     }
 
     updateSurvey(id: number, survey: Survey) {
-        this.http.put(this.surveyURL + id, survey, { headers: this.getHeaders() }).subscribe(
+        this.http.put(this.surveyURL + id, JSON.stringify(survey), { headers: this.getHeaders() }).subscribe(
             (response: Response) => {
                 this.router.navigate(['/surveys']);
             },
@@ -57,21 +57,12 @@ export class SurveyService {
     }
 
     deleteSurvey(id: number) {
-        this.http.delete(this.surveyURL + id, { headers: this.getHeaders() }).subscribe(
-            (response: Response) => {                
-                if (response.status === 200) {
-                    alert('Survey deleted successfully');                    
-                }
-            },
-            (error: Response) => {
-                alert(error.status + '\r\n' + error.statusText + '\r\n' + error.url);
-            }
-        );        
+        return this.http.delete(this.surveyURL + id, { headers: this.getHeaders() });                
     }
 
     private getHeaders() {
         const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
+        headers.append('Content-Type', 'application/json; charset=utf-8');
         headers.append('Accept', 'application/json');
         return headers;
     }

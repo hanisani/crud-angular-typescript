@@ -1,8 +1,8 @@
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+
 
 import { SurveyService } from './../../services/survey.service';
 import { Survey } from '../../models/survey.model';
@@ -36,8 +36,12 @@ export class SurveyListComponent implements OnInit {
   }
 
   onDelete(id: number) {
-    if (confirm('Are you sure that you wish to delete this survey?')) {      
-      this.surveyService.deleteSurvey(id);      
+    if (confirm('Are you sure that you wish to delete this survey?')) {
+      this.surveyService.deleteSurvey(id).subscribe(
+        () => {
+          this.loadSurveys();
+        }
+      );
     }
   }
 
