@@ -46,7 +46,7 @@ export class SurveyListComponent implements OnInit {
   }
 
   onQuestions(id: number) {
-    this.router.navigate(['/surveys/questions/' + id, { relativeTo: this.route }]);
+    this.router.navigate(['/questions/' + id]);
   }
 
 }

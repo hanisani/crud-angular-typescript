@@ -1,6 +1,6 @@
-import { SurveyService } from './../services/survey.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { SurveyService } from './../services/survey.service';
 
 @Component
   (

@@ -13,21 +13,11 @@ import { Question } from '../../models/question.model';
 export class QuestionListComponent implements OnInit 
 {
   
-  questions : Question [] =
-  [
-    new Question(1, 'Title-1', 'Description-1'),
-    new Question(2, 'Title-2', 'Description-2'),
-    new Question(3, 'Title-3', 'Description-3')
-  ];
+  questions : Question []
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-  }
-
-  onReloadQuestions()
-  {
-    this.router.navigate(['/questions']);
   }
 
 }
