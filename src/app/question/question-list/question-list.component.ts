@@ -1,6 +1,8 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { Question } from '../../models/question.model';
+import { QuestionService } from './../../services/question.service';
 
 @Component
 (
@@ -11,13 +13,19 @@ import { Question } from '../../models/question.model';
   }
 )
 export class QuestionListComponent implements OnInit 
-{
-  
+{  
   questions : Question []
 
-  constructor(private router: Router) { }
+  constructor(private questionService: QuestionService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.loadQuestions(this.route.snapshot.params['id']);
+  }
+
+  loadQuestions(id: number) {
+    this.questionService.getQuestions(id).subscribe(
+      questions => this.questions = questions
+    );
   }
 
 }

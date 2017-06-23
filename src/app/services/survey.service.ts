@@ -1,5 +1,5 @@
-import { Router, Params } from '@angular/router';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Router, Params } from '@angular/router';
 import { Http, HttpModule, Response, RequestOptions, RequestMethod, RequestOptionsArgs, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
@@ -16,21 +16,13 @@ export class SurveyService {
     getSurveys(): Observable<Survey[]> {
         return this.http.get(this.surveyURL, { headers: this.getHeaders() }).map(
             response => response.json() as Survey[]
-        ).catch(
-            (error: Response) => {
-                return Observable.throw(error.json().error || 'Something went wrong');
-            }
-            );
+        )
     }
 
     getSurvey(id: number): Observable<any> {
         return this.http.get(this.surveyURL + id, { headers: this.getHeaders() }).map(
             response => response.json() as Survey
-        ).catch(
-            (error: Response) => {
-                return Observable.throw(error.json().error || 'Something went wrong');
-            }
-            );
+        )
     }
 
     addSurvey(survey: Survey) {

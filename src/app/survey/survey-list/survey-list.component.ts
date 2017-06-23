@@ -15,7 +15,6 @@ import { Survey } from '../../models/survey.model';
 export class SurveyListComponent implements OnInit {
 
   surveys: Survey[];
-  errorMessage: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private surveyService: SurveyService) { }
 
@@ -25,8 +24,7 @@ export class SurveyListComponent implements OnInit {
 
   loadSurveys() {
     this.surveyService.getSurveys().subscribe(
-      surveys => this.surveys = surveys,
-      error => this.errorMessage = <any>error,
+      surveys => this.surveys = surveys,      
       () => console.log('Get all surveys complete')
     );
   }
