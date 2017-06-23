@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 
@@ -17,6 +17,18 @@ export class QuestionService
     getQuestions(id: number): Observable<Question[]> {
         return this.http.get(this.surveyURL + id + "/question/", { headers: this.getHeaders() }).map(
             response => response.json() as Question[]
+        );
+    }
+
+    addQuestion(question: Question) {        
+        this.http.post(this.surveyURL, JSON.stringify(question), { headers: this.getHeaders() }).subscribe(
+            (response: Response) => {
+                this.router.navigate(['/questions/1']);
+            },
+            (error: Response) => {
+                alert(error.status + '\r\n' + error.statusText + '\r\n' + error.url);
+            },
+            () => console.log('Add question complete')
         );
     }
 

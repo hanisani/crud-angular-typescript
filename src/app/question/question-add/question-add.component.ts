@@ -1,5 +1,8 @@
-import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { Question } from './../../models/question.model';
+import { QuestionService } from './../../services/question.service';
 
 @Component({
   selector: 'app-question-add',
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionAddComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private questionService: QuestionService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -19,5 +22,11 @@ export class QuestionAddComponent implements OnInit {
 
   onBackQuestion() {
     this.router.navigate(['/questions/' + this.route.snapshot.params['id']], { relativeTo: this.route });
+  }
+
+  onAdd(form: NgForm) {
+    const newQuestion = new Question(form.value.title, 1);
+    this.questionService.addQuestion(newQuestion);
+    form.reset();
   }
 }
