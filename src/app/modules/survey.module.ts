@@ -9,6 +9,7 @@ import { SurveyAddComponent } from './../survey/survey-add/survey-add.component'
 import { SurveyEditComponent } from './../survey/survey-edit/survey-edit.component';
 import { QuestionComponent } from './../question/question.component';
 import { QuestionListComponent } from './../question/question-list/question-list.component';
+import { QuestionAddComponent } from './../question/question-add/question-add.component';
 
 //modules
 import { SharedModule } from './shared.module';
@@ -21,7 +22,8 @@ import { SurveyRoutingModule } from './survey-routing.module';
         SurveyAddComponent,
         SurveyEditComponent,
         QuestionComponent,
-        QuestionListComponent
+        QuestionListComponent,
+        QuestionAddComponent
     ],
     imports: [
         CommonModule,

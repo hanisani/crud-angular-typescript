@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -8,13 +8,17 @@ import { Router } from '@angular/router';
 })
 export class QuestionComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   onSurveys() {    
     this.router.navigate(['/surveys/']);
+  }
+
+  onNewQuestion() {    
+    this.router.navigate(['/questions/add/' + this.route.snapshot.params['id']], { relativeTo: this.route });
   }
 
 }

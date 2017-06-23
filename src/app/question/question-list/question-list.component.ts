@@ -14,11 +14,11 @@ import { QuestionService } from './../../services/question.service';
 )
 export class QuestionListComponent implements OnInit 
 {  
-  questions : Question []
+  questions: Question []  
 
   constructor(private questionService: QuestionService, private route: ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.loadQuestions(this.route.snapshot.params['id']);
   }
 

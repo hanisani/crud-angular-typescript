@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
+  onBackSurvey() {
+    this.router.navigate(['/surveys/']);
+  }
+
+  onBackQuestion() {
+    this.router.navigate(['/questions/' + this.route.snapshot.params['id']], { relativeTo: this.route });
+  }
 }
