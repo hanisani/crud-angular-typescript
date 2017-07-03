@@ -16,7 +16,7 @@ export class QuestionListComponent implements OnInit
 {  
   questions: Question []  
 
-  constructor(private questionService: QuestionService, private route: ActivatedRoute) { }
+  constructor(private questionService: QuestionService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {    
     this.loadQuestions(this.route.snapshot.params['id']);
@@ -26,6 +26,10 @@ export class QuestionListComponent implements OnInit
     this.questionService.getQuestions(id).subscribe(
       questions => this.questions = questions
     );
+  }
+
+  onOptions(id: number) {    
+    this.router.navigate(['/options/' + id]);
   }
 
 }

@@ -1,6 +1,7 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Option } from '../../models/option.model';
+import { OptionService } from './../../services/option.service';
 
 @Component
 (
@@ -12,22 +13,18 @@ import { Option } from '../../models/option.model';
 )
 export class OptionListComponent implements OnInit 
 {
+  options: Option []
 
-  options: Option[] =
-  [
-    new Option(1, 'Title-1', 'Description-1'),
-    new Option(1, 'Title-2', 'Description-2'),
-    new Option(1, 'Title-3', 'Description-3')
-  ];
+  constructor(private router: Router, private route: ActivatedRoute, private optionService: OptionService) { }
 
-  constructor(private router: Router) { }
-
-  ngOnInit() {
+  ngOnInit() {    
+    this.loadOptions(this.route.snapshot.params['id']);
   }
 
-  onReloadOptions()
-  {
-    this.router.navigate(['/options']);
+  loadOptions(id: number) {
+    this.optionService.getOptions(id).subscribe(
+      options => this.options = options
+    );
   }
 
 }

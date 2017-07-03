@@ -17,6 +17,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 //surveys
 import { SurveyService } from './services/survey.service';
 import { QuestionService } from './services/question.service';
+import { OptionService } from './services/option.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 
@@ -52,7 +53,7 @@ const appRoutes: Routes = [
     SurveyRoutingModule,
     RouterModule.forRoot(appRoutes)    
   ],
-  providers: [SurveyService, QuestionService, AuthService, AuthGuardService],
+  providers: [SurveyService, QuestionService, OptionService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

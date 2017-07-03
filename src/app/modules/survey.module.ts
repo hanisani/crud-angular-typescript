@@ -10,6 +10,8 @@ import { SurveyEditComponent } from './../survey/survey-edit/survey-edit.compone
 import { QuestionComponent } from './../question/question.component';
 import { QuestionListComponent } from './../question/question-list/question-list.component';
 import { QuestionAddComponent } from './../question/question-add/question-add.component';
+import { OptionComponent } from './../option/option.component';
+import { OptionListComponent } from './../option/option-list/option-list.component';
 
 //modules
 import { SharedModule } from './shared.module';
@@ -23,7 +25,9 @@ import { SurveyRoutingModule } from './survey-routing.module';
         SurveyEditComponent,
         QuestionComponent,
         QuestionListComponent,
-        QuestionAddComponent
+        QuestionAddComponent,
+        OptionComponent,
+        OptionListComponent
     ],
     imports: [
         CommonModule,

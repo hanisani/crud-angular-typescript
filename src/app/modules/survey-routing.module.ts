@@ -7,6 +7,7 @@ import { SurveyAddComponent } from './../survey/survey-add/survey-add.component'
 import { SurveyEditComponent } from './../survey/survey-edit/survey-edit.component';
 import { QuestionComponent } from './../question/question.component';
 import { QuestionAddComponent } from './../question/question-add/question-add.component';
+import { OptionComponent } from './../option/option.component';
 
 //services
 import { AuthGuardService } from './../services/auth-guard.service';
@@ -16,7 +17,8 @@ const surveyRoutes: Routes = [
     { path: 'surveys/add', component: SurveyAddComponent, canActivate: [AuthGuardService] },
     { path: 'surveys/edit/:id', component: SurveyEditComponent, canActivate: [AuthGuardService] },
     { path: 'questions/:id', component: QuestionComponent, canActivate: [AuthGuardService] },
-    { path: 'questions/add/:id', component: QuestionAddComponent, canActivate: [AuthGuardService] }
+    { path: 'questions/add/:id', component: QuestionAddComponent, canActivate: [AuthGuardService] },
+    { path: 'options/:id', component: OptionComponent, canActivate: [AuthGuardService] }
 ]
 
 @NgModule({
