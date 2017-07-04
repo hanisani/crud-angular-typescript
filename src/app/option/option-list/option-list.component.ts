@@ -13,7 +13,7 @@ import { OptionService } from './../../services/option.service';
 )
 export class OptionListComponent implements OnInit 
 {
-  options: Option []
+  options: Option [];
 
   constructor(private router: Router, private route: ActivatedRoute, private optionService: OptionService) { }
 
@@ -25,6 +25,16 @@ export class OptionListComponent implements OnInit
     this.optionService.getOptions(id).subscribe(
       options => this.options = options
     );
+  }
+
+  onDelete(id: number) {
+    if (confirm('Are you sure that you wish to delete this option?')) {
+      this.optionService.deleteOption(id).subscribe(
+        () => {
+          this.loadOptions(this.route.snapshot.params['id']);
+        }
+      );
+    }
   }
 
 }

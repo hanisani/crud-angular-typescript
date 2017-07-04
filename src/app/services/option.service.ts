@@ -20,6 +20,10 @@ export class OptionService
         );
     }
 
+    deleteOption(id: number) {
+        return this.http.delete(this.surveyURL + id, { headers: this.getHeaders() });                
+    }
+
     private getHeaders() {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json; charset=utf-8');
