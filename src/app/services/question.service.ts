@@ -20,6 +20,10 @@ export class QuestionService
         );
     }
 
+    deleteQuestion(id: number) {
+        return this.http.delete(this.surveyURL + id, { headers: this.getHeaders() });               
+    }
+
     addQuestion(question: Question) {
         this.http.post(this.surveyURL, JSON.stringify(question), { headers: this.getHeaders() }).subscribe(
             (response: Response) => {

@@ -28,6 +28,16 @@ export class QuestionListComponent implements OnInit
     );
   }
 
+  onDelete(id: number) {
+    if (confirm('Are you sure that you wish to delete this question?')) {
+      this.questionService.deleteQuestion(id).subscribe(
+        () => {
+          this.loadQuestions(this.route.snapshot.params['id']);
+        }
+      );
+    }
+  }
+
   onOptions(id: number) {    
     this.router.navigate(['/options/' + id]);
   }
