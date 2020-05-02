@@ -25,6 +25,9 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { SharedModule } from './modules/shared.module';
 import { SurveyModule } from './modules/survey.module';
 import { SurveyRoutingModule } from './modules/survey-routing.module';
+import { StudentsComponent } from './components/students/students.component';
+import { TeachersComponent } from './components/teachers/teachers.component';
+import { DepartmentsComponent } from './components/departments/departments.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,7 +45,10 @@ const appRoutes: Routes = [
     LeftnavbarComponent,
     HomeComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    StudentsComponent,
+    TeachersComponent,
+    DepartmentsComponent
   ],
   imports: [
     BrowserModule,
